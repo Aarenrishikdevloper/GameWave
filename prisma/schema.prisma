@@ -1,0 +1,69 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "fullTextIndex"]
+}
+
+datasource db {
+  provider = "cockroachdb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String   @id @default(uuid())
+  username       String   @unique
+  externalUserId String   @unique
+  imageUrl       String   @db.String(12000)
+  bio            String?  @db.String(400)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @default(now())
+  following      Follow[] @relation("Following")
+  followedBy     Follow[] @relation("FolloWedBy")
+  blocking       Block[]  @relation("Blocking")
+  blockedby      Block[]  @relation("BlockedBy")
+  stream         Stream?
+}
+
+model Follow {
+  id          String   @id @default(uuid())
+  followerId  String
+  followingId String
+  follower    User     @relation(name: "Following", fields: [followerId], references: [id], onDelete: Cascade)
+  following   User     @relation(name: "FolloWedBy", fields: [followingId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Block {
+  id        String @id @default(uuid())
+  blockerId String
+  blockedId String
+  blocker   User   @relation(name: "Blocking", fields: [blockerId], references: [id], onDelete: Cascade)
+  blocked   User   @relation(name: "BlockedBy", fields: [blockedId], references: [id], onDelete: Cascade)
+
+  @@unique([blockerId, blockedId])
+  @@index([blockerId])
+  @@index([blockedId])
+}
+
+model Stream {
+  id                  String   @id @default(uuid())
+  name                String   @db.String(1200)
+  thumbnail           String?  @db.String(1200)
+  ingressId           String?  @unique
+  serverUrl           String?  @db.String(1200)
+  streamkey           String?  @db.String(400)
+  isLive              Boolean  @default(false)
+  isChatEnabled       Boolean  @default(false)
+  isChatDelayed       Boolean  @default(false)
+  isChatFollowersOnly Boolean  @default(false)
+  userId              String   @unique
+  user                User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  @@index([userId])
+  @@index([ingressId])
+}
