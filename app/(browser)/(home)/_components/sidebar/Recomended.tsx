@@ -18,7 +18,7 @@ export const Recomended = ({data,}:recomendedprops)=>{
            )}
            <ul className={'space-y-2 px-2'}>
                {data.map((user)=>(
-                   <Useritem username={user.username} imageUrl={user.imageUrl} islive={user.stream.isLive} key={user.id}/>
+                   <Useritem username={user.username} imageUrl={user.imageUrl} islive={user.stream?.isLive} key={user.id}/>
                ))}
            </ul>
        </div>
