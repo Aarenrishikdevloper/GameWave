@@ -9,7 +9,7 @@ import { toast } from 'sonner';
 interface communityprops{
     hostname: string; 
     viewername: string; 
-    participant: string; 
+    participant?: string; 
     participantidentity: string;
 }
 const CommunityItem = ({hostname, viewername, participant, participantidentity}:communityprops) => {   
