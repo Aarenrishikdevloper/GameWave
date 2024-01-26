@@ -11,7 +11,7 @@ import {Skeleton} from "@/components/ui/skeleton";
 interface useritemprops{
     username:string;
     imageUrl:string;
-    islive:boolean
+    islive?:boolean
 }
 export const Useritem = ({username,imageUrl, islive}:useritemprops)=>{
      const pathname = usePathname();
