@@ -4,7 +4,7 @@ import {useSidebar} from "@/store/use-sidebar";
 import {Useritem, UserItemSkeleton} from "@/app/(browser)/(home)/_components/sidebar/Useritem";
 
 interface recomendedprops{
-    data:(User &{stream:{isLive:boolean}})[]
+    data:(User &{stream:{isLive:boolean} | null})[]
 }
 export const Recomended = ({data,}:recomendedprops)=>{
     const{collapsed}= useSidebar((state)=>state)
