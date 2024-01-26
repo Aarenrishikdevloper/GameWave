@@ -8,7 +8,9 @@ import {Follower, FollowSkeleton} from "@/app/(browser)/(home)/_components/sideb
 export const Sidebar = async()=>{
     const recomended = await getRecomended();
     const follow = await getfollowuser()
-
+    if(!follow){
+        return null
+    }
     return(
         <Wrapper>
           <Toggle/>
