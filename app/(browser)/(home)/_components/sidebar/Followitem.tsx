@@ -23,7 +23,7 @@ interface followprops {
         )}
          <ul className={"space-y-2 px-2"}>
              {data.map((follow)=>(
-                 <Useritem username={follow.following.username} imageUrl={follow.following.imageUrl} islive={follow.following.stream.isLive} key={follow.following.id}/>
+                 <Useritem username={follow.following.username} imageUrl={follow.following.imageUrl} islive={follow.following.stream?.isLive} key={follow.following.id}/>
              ))}
          </ul>
     </div>
