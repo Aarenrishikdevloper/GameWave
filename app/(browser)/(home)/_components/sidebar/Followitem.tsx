@@ -5,7 +5,8 @@ import {useSidebar} from "@/store/use-sidebar";
 import {Useritem, UserItemSkeleton} from "@/app/(browser)/(home)/_components/sidebar/Useritem";
 interface followprops {
     data:(Follow &{
-        following:User &{stream:{isLive:boolean}| null;}
+        following:User &{stream:{isLive:boolean}| null;
+      }                  
     })[]
 }
  export const Follower = ({data}:followprops) => {
