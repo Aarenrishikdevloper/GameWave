@@ -23,7 +23,7 @@ import {createIngress} from "@/action/ingress";
 import {toast} from "sonner";
 const RTMPS = String(IngressInput.RTMP_INPUT)
 const WHIPS = String(IngressInput.WHIP_INPUT)
-type IngressType  = typeof RTMP | typeof WHIP
+type IngressType  = typeof RTMPS | typeof WHIPS
 export const ConnectModal =()=>{
     const closeRef = useRef<ElementRef<'button'>>(null);
     const [isPending,startTransition] = useTransition();
