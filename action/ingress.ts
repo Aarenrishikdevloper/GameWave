@@ -41,14 +41,14 @@ export const createIngress = async(ingressType:IngressInput)=>{
         participantIdentity:self.id
     }
     if(ingressType === IngressInput.WHIP_INPUT){
-        option.bypassTranscoding = true
+        options.bypassTranscoding = true
     }else{
-        option.video = {
+        options.video = {
             source:TrackSource.CAMERA,
             preset:IngressVideoEncodingPreset.H264_1080P_30FPS_3_LAYERS,
 
         };
-       option.audio = {
+       options.audio = {
            source:TrackSource.MICROPHONE,
            preset:IngressAudioEncodingPreset.OPUS_STEREO_96KBPS
        }
