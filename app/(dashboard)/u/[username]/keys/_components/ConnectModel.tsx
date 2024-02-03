@@ -27,7 +27,7 @@ type IngressType  = typeof RTMPS | typeof WHIPS
 export const ConnectModal =()=>{
     const closeRef = useRef<ElementRef<'button'>>(null);
     const [isPending,startTransition] = useTransition();
-    const[ingressType, setIngresssType] = useState<IngressType>(RTMP)
+    const[ingressType, setIngresssType] = useState<IngressType>(RTMPS)
     const onSubmit = ()=>{
         startTransition(()=>{
             createIngress(parseInt(ingressType)).then(()=>{
