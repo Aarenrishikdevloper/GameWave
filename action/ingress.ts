@@ -34,7 +34,7 @@ export const resetIngress = async(hostIndentity:string)=>{
 export const createIngress = async(ingressType:IngressInput)=>{
     const self = await getSelf();
     await resetIngress(self.id)
-    const option:CreateIngressOptions={
+    const options:CreateIngressOptions={
         name:self.username,
         roomName:self.id,
         participantName:self.username,
@@ -55,7 +55,7 @@ export const createIngress = async(ingressType:IngressInput)=>{
     }
     const ingress = await ingressClient.createIngress(
         ingressType,
-        option
+        options
     )
     if(!ingress || !ingress.url || !ingress.streamKey){
         throw new Error("Something Went wrong")
