@@ -21,8 +21,8 @@ import {IngressInput} from "livekit-server-sdk";
 import {ElementRef, useRef, useState, useTransition} from "react";
 import {createIngress} from "@/action/ingress";
 import {toast} from "sonner";
-const RTMPS = String(IngressInput.RTMP_INPUT)
-const WHIPS = String(IngressInput.WHIP_INPUT)
+const RTMPS = String(IngressInput.RTMPS_INPUT)
+const WHIPS = String(IngressInput.WHIPS_INPUT)
 type IngressType  = typeof RTMPS | typeof WHIPS
 export const ConnectModal =()=>{
     const closeRef = useRef<ElementRef<'button'>>(null);
