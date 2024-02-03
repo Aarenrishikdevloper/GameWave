@@ -54,8 +54,8 @@ export const ConnectModal =()=>{
                         <SelectValue placeholder="Ingress Type" />
                     </SelectTrigger>
                     <SelectContent>
-                        <SelectItem value={RTMP}>RTMP</SelectItem>
-                        <SelectItem value={WHIP}>WHIP</SelectItem>
+                        <SelectItem value={RTMPS}>RTMPS</SelectItem>
+                        <SelectItem value={WHIPS}>WHIPS</SelectItem>
 
                     </SelectContent>
                 </Select>
